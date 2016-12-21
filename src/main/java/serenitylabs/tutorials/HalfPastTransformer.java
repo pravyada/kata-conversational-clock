@@ -11,7 +11,7 @@ import java.util.Map;
 public class HalfPastTransformer implements ConversationalTimeFormatter{
     @Override
 
-    public String transform(Integer hour, Integer minutes){
+    public String convertTimeToText(Integer hour, Integer minutes){
         return "It is half past "+ HOUR.get(hour);
 
     }

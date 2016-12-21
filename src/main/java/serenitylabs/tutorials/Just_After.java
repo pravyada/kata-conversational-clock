@@ -9,7 +9,7 @@ import java.util.Map;
 public class Just_After implements serenitylabs.tutorials.interfaces.ConversationalTimeFormatter {
     @Override
 
-    public String transform(Integer hour, Integer minutes){
+    public String convertTimeToText(Integer hour, Integer minutes){
 
         return "It is just after "+ HOUR_O_CLOCKS.get((hour%12));
     }

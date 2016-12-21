@@ -13,8 +13,13 @@ import java.util.Map;
 public class ConversationalClockDisplayer {
     private final TimeProvider timeProvider;
 
-    public ConversationalClockDisplayer (TimeProvider timeProvider){this.timeProvider=timeProvider;}
-    public ConversationalClockDisplayer(){this(()-> LocalTime.now());}
+    public ConversationalClockDisplayer (TimeProvider timeProvider){
+    	this.timeProvider=timeProvider;
+    }
+    
+    public ConversationalClockDisplayer(){
+    	this(()-> LocalTime.now());
+    	}
 
     private static Map<Integer,ConversationalTimeFormatter> TIME_FORMAT_STRATEGY=new HashMap<>();
     static{
@@ -32,13 +37,13 @@ public class ConversationalClockDisplayer {
         TIME_FORMAT_STRATEGY.put(04, new Just_After());
     }
 
-    public String showTime(){
+    public String displayTime(){
         Integer localTimeHour=timeProvider.getLocalTime().getHour();
         Integer localTimeMinute=timeProvider.getLocalTime().getMinute();
         return getTimeStrategy(localTimeHour,localTimeMinute);
     }
 
     private String getTimeStrategy(Integer localTimeHour, Integer localTimeMinute){
-        return TIME_FORMAT_STRATEGY.get(localTimeMinute).transform(localTimeHour,localTimeMinute);
+        return TIME_FORMAT_STRATEGY.get(localTimeMinute).convertTimeToText(localTimeHour,localTimeMinute);
     }
 }

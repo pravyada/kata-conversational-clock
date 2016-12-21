@@ -39,7 +39,7 @@ public class TestConversationalClock {
 
     private void convertTimeToText(int hour, int minutes, String expectedTime) {
     conversationalClockDisplayer = new ConversationalClockDisplayer(()-> LocalTime.of(hour,minutes));
-        conversationalTime = conversationalClockDisplayer.showTime();
+        conversationalTime = conversationalClockDisplayer.displayTime();
 
 
         MatcherAssert.assertThat(conversationalTime, Matchers.is(expectedTime));
@@ -74,7 +74,7 @@ public class TestConversationalClock {
 
     @TestWith(
             {
-                    "14,01, It is just after two o'clock"
+                    "4,20, It is four oclocke twenty minutes in the morning"
             }
     )
 

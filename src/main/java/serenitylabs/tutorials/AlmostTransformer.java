@@ -12,7 +12,7 @@ import java.util.Map;
 public class AlmostTransformer implements ConversationalTimeFormatter {
     @Override
 
-    public String transform(Integer hour, Integer minutes){
+    public String convertTimeToText(Integer hour, Integer minutes){
 
         return "It is almost "+ HOUR_O_CLOCKS.get((hour%12) + 1);
     }

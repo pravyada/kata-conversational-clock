@@ -9,7 +9,7 @@ import java.util.Map;
 public class QuarteToTransformer implements serenitylabs.tutorials.interfaces.ConversationalTimeFormatter {
     @Override
 
-    public String transform(Integer hour, Integer minutes){
+    public String convertTimeToText(Integer hour, Integer minutes){
         return "It is quarter to "+ HOUR.get((hour%12) + 1);
 
     }
