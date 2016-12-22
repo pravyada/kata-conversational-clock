@@ -1,31 +1,40 @@
 package serenitylabs.tutorials;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import static java.lang.String.format;
 
 class SystemTime {
 
-    /**
-     * @return the hour of the day a 24-hour format
-     */
-    public int hour() {
-        return now().getHour();
-    }
+	public String getMinutesToDisplayAsString(int minutesToDisplayInt) {
+		String minToDisplayStr;
+		if (minutesToDisplayInt == 0)
+			minToDisplayStr = "00";
+		else if (minutesToDisplayInt < 10)
+			minToDisplayStr = "0" + minutesToDisplayInt;
+		else
+			minToDisplayStr = "" + minutesToDisplayInt;
+		return minToDisplayStr;
+	}
 
-    /**
-     * @return the minute of the hour
-     */
-    public int minute() {
-        return now().getMinute();
-    }
+	public int getMinutesToDisplayAsInt(int totalMinutes, int hours) {
+		return totalMinutes - (hours * 60);
+	}
 
-    @Override
-    public String toString() {
-        return format("%01d:%01d", hour(), minute());
-    }
+	public int getHoursToDisplay(int hours, int hoursToDisplay) {
+		if (hours > 12) {
+			hoursToDisplay = hoursToDisplay - 12;
+		}
+		return hoursToDisplay;
+	}
 
-    private LocalTime now() {
-        return LocalTime.now();
-    }
+	public int getTotalNumberOfHours(int totalMinutes) {
+		return totalMinutes / 60;
+	}
+
+	public int getTotalMinutesInCurrentTime() {
+		return (LocalDateTime.now().getHour() * 60) + LocalDateTime.now().getMinute();
+	}
+
 }
