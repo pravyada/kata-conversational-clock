@@ -22,11 +22,6 @@ public class ConvertTimeIntoTextMessage {
 	}
 	private static  Map<String,String>minutesInWords = new HashMap<String,String>();
 	{
-		minutesInWords.put("00","00");
-		minutesInWords.put("01","One");
-		minutesInWords.put("02","Two");
-		minutesInWords.put("03","Three");
-		minutesInWords.put("04","Four");
 		minutesInWords.put("05","Five");
 		minutesInWords.put("06","Six");
 		minutesInWords.put("07","Seven");
@@ -98,20 +93,20 @@ public class ConvertTimeIntoTextMessage {
 			timeToDisplay="it's 1 O'clock";
 		else if(hoursToDisplay==0)
 			timeToDisplay="it's midnight";
-		else if (minutesInInteger >= 0 && minutesInInteger <= 4)
-			timeToDisplay = "It's just after "+hoursToDisplay;
+		else if (minutesInInteger == 0 && minutesInInteger <= 4)
+			timeToDisplay = "It's just after "+hoursInWord.get(hoursToDisplay);
 		else if (minutesInInteger >= 5 && minutesInInteger <= 29)
-			timeToDisplay = "It's " + minToDisplay + " past " + hoursToDisplay;
+			timeToDisplay = "It's " + minutesInWords.get(minToDisplay) + " past " + hoursInWord.get(hoursToDisplay);
 		else if (minutesInInteger >= 30 && minutesInInteger <= 44)
-			timeToDisplay = "It's half past " + hoursToDisplay;
+			timeToDisplay = "It's half past " + hoursInWord.get(hoursToDisplay);
 		else if (minutesInInteger >= 45 && minutesInInteger <= 49)
-			timeToDisplay = "It's quarter to " + (hoursToDisplay + 1);
+			timeToDisplay = "It's quarter to " + hoursInWord.get(hoursToDisplay+ 1);
 		else if (minutesInInteger >= 50 && minutesInInteger <= 57)
-			timeToDisplay = "It's" + (minutesInAnHour - minutesInInteger) + " to " + (hoursToDisplay + 1);
+			timeToDisplay = "It's" + minutesInWords.get(minutesInAnHour - minutesInInteger) + " to " +hoursInWord.get(hoursToDisplay+ 1);
 		else if (minutesInInteger >= 58 && minutesInInteger <= 59)
-			timeToDisplay = "It's almost " + (hoursToDisplay + 1);
+			timeToDisplay = "It's almost " + hoursInWord.get(hoursToDisplay + 1);
 		else
-			timeToDisplay = String.valueOf(hoursToDisplay);
+			timeToDisplay = "It's "+hoursInWord.get(hoursToDisplay);
 
 		return timeToDisplay;
 	}
